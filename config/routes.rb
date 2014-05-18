@@ -1,4 +1,15 @@
 Canyousellme::Application.routes.draw do
+  get "pitch/record"
+
+  get "pitch/preview"
+
+  get "pitch/save"
+
+  get "pitch/submit"
+
+  resources :pitchers
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
