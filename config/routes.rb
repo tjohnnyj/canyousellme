@@ -1,11 +1,20 @@
 Canyousellme::Application.routes.draw do
+
+#  get "sessions/create"
+
+#  get "sessions/destroy"
+
   get "pitch/record"
 
   get "pitch/preview"
 
   get "pitch/save"
 
-  get "pitch/submit"
+  get "pitch/submit"  
+  
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
 
   resources :pitchers
 
@@ -59,7 +68,7 @@ Canyousellme::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+   root :to => 'pitchers#index'
 
   # See how all your routes lay out with "rake routes"
 

@@ -6,9 +6,17 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
+<body>       
+  <%= yield %>
+  
+  <div id="user_nav">
+    <% if current_pitcher %>
+      Signed in as <strong><%= current_pitcher.name %></strong>!
+      <%= link_to "Sign out", signout_path, id: "sign_out" %>
+    <% else %>
+      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+    <% end %>
+  </div>
 
 </body>
 </html>

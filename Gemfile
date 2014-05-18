@@ -18,7 +18,10 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-end
+end   
+
+gem 'omniauth'
+gem 'omniauth-facebook', '~> 1.6.0'
 
 gem 'jquery-rails'
 
