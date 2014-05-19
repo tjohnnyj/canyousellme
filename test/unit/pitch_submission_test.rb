@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PitchControllerTest < ActionController::TestCase
+class PitchSubmissionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

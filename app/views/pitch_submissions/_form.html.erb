@@ -1,0 +1,25 @@
+<%= form_for(@pitch_submission) do |f| %>
+  <% if @pitch_submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pitch_submission.errors.count, "error") %> prohibited this pitch_submission from being saved:</h2>
+
+      <ul>
+      <% @pitch_submission.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pitch_id %><br />
+    <%= f.number_field :pitch_id %>
+  </div>
+  <div class="field">
+    <%= f.label :pitcher_id %><br />
+    <%= f.number_field :pitcher_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

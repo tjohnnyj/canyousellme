@@ -1,0 +1,25 @@
+<h1>Listing pitch_submissions</h1>
+
+<table>
+  <tr>
+    <th>Pitch</th>
+    <th>Pitcher</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pitch_submissions.each do |pitch_submission| %>
+  <tr>
+    <td><%= pitch_submission.pitch_id %></td>
+    <td><%= pitch_submission.pitcher_id %></td>
+    <td><%= link_to 'Show', pitch_submission %></td>
+    <td><%= link_to 'Edit', edit_pitch_submission_path(pitch_submission) %></td>
+    <td><%= link_to 'Destroy', pitch_submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pitch submission', new_pitch_submission_path %>

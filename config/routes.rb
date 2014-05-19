@@ -1,5 +1,9 @@
 Canyousellme::Application.routes.draw do
 
+  resources :pitch_submissions
+
+  get "static_pages/home"
+  get "static_pages/help"
 #  get "sessions/create"
 
 #  get "sessions/destroy"
