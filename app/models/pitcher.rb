@@ -10,5 +10,10 @@ class Pitcher < ActiveRecord::Base
         user.oauth_expires_at = Time.at(auth.credentials.expires_at)
         user.save!
       end
-    end
+    end   
+    
+    def pitches_for_pitcher(pitcher_id)                   
+      my_pitches = (pitcher_id)     
+      return my_pitches 
+    end   
   end

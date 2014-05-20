@@ -8,7 +8,7 @@ Canyousellme::Application.routes.draw do
 
 #  get "sessions/destroy"
 
-  get "pitch/record"
+  get "pitch/new"
 
   get "pitch/preview"
 
