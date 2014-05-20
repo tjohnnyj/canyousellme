@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pitcher_id: 1
+  pitch_video_url: MyString
+
+two:
+  pitcher_id: 1
+  pitch_video_url: MyString

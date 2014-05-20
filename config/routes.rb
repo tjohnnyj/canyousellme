@@ -1,4 +1,28 @@
 Canyousellme::Application.routes.draw do
+
+  resources :pitch_submissions
+
+  get "static_pages/home"
+  get "static_pages/help"
+#  get "sessions/create"
+
+#  get "sessions/destroy"
+
+  get "pitch/new"
+
+  get "pitch/preview"
+
+  get "pitch/save"
+
+  get "pitch/submit"  
+  
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
+
+  resources :pitchers
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +72,7 @@ Canyousellme::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+   root :to => 'pitchers#index'
 
   # See how all your routes lay out with "rake routes"
 
