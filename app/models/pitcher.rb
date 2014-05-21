@@ -1,5 +1,4 @@
 class Pitcher < ActiveRecord::Base
-  attr_accessible :email, :name     
   has_many :pitches
     def self.from_omniauth(auth)
       where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
@@ -13,7 +12,7 @@ class Pitcher < ActiveRecord::Base
     end   
     
     def pitches_for_pitcher(pitcher_id)                   
-      my_pitches = (pitcher_id)     
+      my_pitches = Pitch.find_by_pitcher_id(pitcher_id) 
       return my_pitches 
     end   
   end
