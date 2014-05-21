@@ -1,83 +1,74 @@
 class PitchsController < ApplicationController
-  # GET /pitchs
-  # GET /pitchs.json
+  before_action :set_pitch, only: [:show, :edit, :update, :destroy]
+
+  # GET /pitches
+  # GET /pitches.json
   def index
-    @pitchs = Pitch.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @pitchs }
-    end
+    @pitches = Pitch.all
   end
 
-  # GET /pitchs/1
-  # GET /pitchs/1.json
+  # GET /pitches/1
+  # GET /pitches/1.json
   def show
-    @pitch = Pitch.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @pitch }
-    end
   end
 
-  # GET /pitchs/new
-  # GET /pitchs/new.json
+  # GET /pitches/new
   def new
     @pitch = Pitch.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @pitch }
-    end
   end
 
-  # GET /pitchs/1/edit
+  # GET /pitches/1/edit
   def edit
-    @pitch = Pitch.find(params[:id])
   end
 
-  # POST /pitchs
-  # POST /pitchs.json
+  # POST /pitches
+  # POST /pitches.json
   def create
-    @pitch = Pitch.new(params[:pitch])
+    @pitch = Pitch.new(pitch_params)
 
     respond_to do |format|
       if @pitch.save
-        format.html { redirect_to @pitch, notice: 'Pitch submission was successfully created.' }
-        format.json { render json: @pitch, status: :created, location: @pitch }
+        format.html { redirect_to @pitch, notice: 'Pitch was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @pitch }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @pitch.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /pitchs/1
-  # PUT /pitchs/1.json
+  # PATCH/PUT /pitches/1
+  # PATCH/PUT /pitches/1.json
   def update
-    @pitch = Pitch.find(params[:id])
-
     respond_to do |format|
-      if @pitch.update_attributes(params[:pitch])
-        format.html { redirect_to @pitch, notice: 'Pitch submission was successfully updated.' }
+      if @pitch.update(pitch_params)
+        format.html { redirect_to @pitch, notice: 'Pitch was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @pitch.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /pitchs/1
-  # DELETE /pitchs/1.json
+  # DELETE /pitches/1
+  # DELETE /pitches/1.json
   def destroy
-    @pitch = Pitch.find(params[:id])
     @pitch.destroy
-
     respond_to do |format|
-      format.html { redirect_to pitchs_url }
+      format.html { redirect_to pitches_url }
       format.json { head :no_content }
     end
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_pitch
+      @pitch = Pitch.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def pitch_params
+      params[:pitch]
+    end
 end

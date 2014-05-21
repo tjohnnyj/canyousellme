@@ -1,5 +1,7 @@
 Canyousellme::Application.routes.draw do
 
+  resources :samples
+
   resources :pitch_submissions
 
   get "static_pages/home"
@@ -16,9 +18,9 @@ Canyousellme::Application.routes.draw do
 
   get "pitch/submit"  
   
-  match 'auth/:provider/callback', to: 'sessions#create'
-  match 'auth/failure', to: redirect('/')
-  match 'signout', to: 'sessions#destroy', as: 'signout'
+  get 'auth/:provider/callback' , to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
 
   resources :pitchers
 
