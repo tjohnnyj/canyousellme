@@ -1,6 +1,9 @@
 Canyousellme::Application.routes.draw do
 
-  resources :pitch_submissions
+  resources :pitch_submissions   
+  resources :pitchers do
+    resources :pitches
+  end
 
   get "static_pages/home"
   get "static_pages/help"
@@ -9,7 +12,6 @@ Canyousellme::Application.routes.draw do
 #  get "sessions/destroy"
 
   get "pitch/new"
-
   get "pitch/preview"
 
   get "pitch/save"
