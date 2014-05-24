@@ -11,12 +11,11 @@ Canyousellme::Application.routes.draw do
 
 #  get "sessions/destroy"
 
-  get "pitch/new"
-  get "pitch/preview"
+  get "pitches/new"
+  get "pitches/preview"
 
-  get "pitch/save"
-
-  get "pitch/submit"  
+  get "pitchers/:pitcher_id/pitches", to: 'pitches#index'
+  get "pitches/submit"  
   
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')

@@ -1,8 +1,11 @@
-class PitchesController < ApplicationController
+class PitchesController < ApplicationController        
+  
+  before_filter :load_pitcher
+  
   # GET /pitches
   # GET /pitches.json
   def index
-    @pitches = Pitch.all
+    @pitches = @pitcher.pitches.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,8 +15,8 @@ class PitchesController < ApplicationController
 
   # GET /pitches/1
   # GET /pitches/1.json
-  def show
-    @pitch = Pitch.find(params[:id])
+  def show      
+    @pitch = @pitcher.pitches.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,8 +27,7 @@ class PitchesController < ApplicationController
   # GET /pitches/new
   # GET /pitches/new.json
   def new
-    @pitch = Pitch.new
-    @pitch.pitcher_id = :pitcher_id
+    @pitch = @pitcher.pitches.new  
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @pitch }
@@ -40,11 +42,12 @@ class PitchesController < ApplicationController
   # POST /pitches
   # POST /pitches.json
   def create
-    @pitch = Pitch.new(params[:pitch])
+  #  @pitch = Pitch.new(params[:pitch]) 
+    @pitch = @pitcher.pitches.new(params[:pitch])
 
     respond_to do |format|
       if @pitch.save
-        format.html { redirect_to @pitch, notice: 'Pitch submission was successfully created.' }
+        format.html { redirect_to [@pitcher,@pitch], notice: 'Pitch submission was successfully created.' }
         format.json { render json: @pitch, status: :created, location: @pitch }
       else
         format.html { render action: "new" }
@@ -79,5 +82,13 @@ class PitchesController < ApplicationController
       format.html { redirect_to pitches_url }
       format.json { head :no_content }
     end
+  end   
+  
+  
+  private 
+  
+  def load_pitcher
+    @pitcher = Pitcher.find(params[:pitcher_id])
   end
+  
 end
