@@ -1,6 +1,9 @@
 Canyousellme::Application.routes.draw do
 
-  resources :pitch_submissions
+  resources :pitch_submissions   
+  resources :pitchers do
+    resources :pitches
+  end
 
   get "static_pages/home"
   get "static_pages/help"
@@ -8,13 +11,11 @@ Canyousellme::Application.routes.draw do
 
 #  get "sessions/destroy"
 
-  get "pitch/new"
+  get "pitches/new"
+  get "pitches/preview"
 
-  get "pitch/preview"
-
-  get "pitch/save"
-
-  get "pitch/submit"  
+  get "pitchers/:pitcher_id/pitches", to: 'pitches#index'
+  get "pitches/submit"  
   
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')

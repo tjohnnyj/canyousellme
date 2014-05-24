@@ -11,6 +11,6 @@
 </p>
 
 <%= @pitcher.pitches_for_pitcher(@pitcher.id).inspect %>
-
+<%= link_to 'New Pitch', new_pitcher_pitch_path(@pitcher.id) %> 
 <%= link_to 'Edit', edit_pitcher_path(@pitcher) %> |
 <%= link_to 'Back', pitchers_path %>
