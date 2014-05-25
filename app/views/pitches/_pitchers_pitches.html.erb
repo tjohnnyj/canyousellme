@@ -1,0 +1,24 @@
+<h1>Listing pitches</h1>
+
+<table>
+  <tr>
+    <th>Pitch</th>
+    <th>Pitcher</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pitches.each do |pitch| %>
+  <tr>
+    <td><%= pitch.id %></td>
+    <td><%= pitch.pitcher_id %></td>
+    <td><%= link_to 'Show', pitcher_pitch %></td>
+    <td><%= link_to 'Edit', edit_pitcher_pitch(pitch) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pitch submission', new_pitch_submission_path %>
