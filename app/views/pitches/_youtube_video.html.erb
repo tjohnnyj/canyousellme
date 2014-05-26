@@ -1,0 +1,12 @@
+<%= pitch.inspect %>
+<br>
+<br>
+<object width="640" height="390">
+  <param name="movie"
+         value="<%= pitch.embed_video %>"></param>
+  <param name="allowScriptAccess" value="always"></param>
+  <embed src="<%= pitch.embed_video %>"
+         type="application/x-shockwave-flash"
+         allowscriptaccess="always"
+         width="640" height="390"></embed>
+</object>

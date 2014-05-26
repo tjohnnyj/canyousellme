@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.18'  
 gem 'pg', '0.15.1'      
 gem 'simple_form'
+gem 'rest-client'
 
 
 # Bundle edge Rails instead:

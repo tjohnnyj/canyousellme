@@ -14,9 +14,10 @@
 <%= pitches.inspect %>
 <% pitches.each do |p| %> 
   <p>
-    <%= p.pitch_video_url %>
-    <%= p["vid_key"] %>
-    <%= link_to "view", pitcher_pitch_path(@pitcher.id, p.id) %> 
+    <%= link_to "view", pitcher_pitch_path(@pitcher.id, p.id) %>     
+    <%= p.get_video_details %>  
+    <%= render :partial => 'pitches/youtube_video', locals: {pitch: p}  %>
+    
   </p>
 <% end %>
 
