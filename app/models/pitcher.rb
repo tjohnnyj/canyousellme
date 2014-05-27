@@ -13,7 +13,10 @@ class Pitcher < ActiveRecord::Base
     end   
     
     def pitches_for_pitcher(pitcher_id)                   
-      my_pitches = (pitcher_id)     
-      return my_pitches 
-    end   
+      @pitcher = Pitcher.find_by_id(pitcher_id)
+      pitches = @pitcher.pitches.all    
+      return pitches
+    end                      
+    
+  
   end

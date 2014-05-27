@@ -10,7 +10,17 @@
   <%= @pitcher.email %>
 </p>
 
-<%= @pitcher.pitches_for_pitcher(@pitcher.id).inspect %>
+<% pitches = @pitcher.pitches_for_pitcher(@pitcher.id) %>     
+<%= pitches.inspect %>
+<% pitches.each do |p| %> 
+  <p>
+    <%= link_to "view", pitcher_pitch_path(@pitcher.id, p.id) %>     
+    <%= p.get_video_details %>  
+    <%= render :partial => 'pitches/youtube_video', locals: {pitch: p}  %>
+    
+  </p>
+<% end %>
+
 <%= link_to 'New Pitch', new_pitcher_pitch_path(@pitcher.id) %> 
 <%= link_to 'Edit', edit_pitcher_path(@pitcher) %> |
 <%= link_to 'Back', pitchers_path %>
