@@ -11,8 +11,8 @@
 </p>  
 
 <p>
-  <b>Pitcher:</b>
-  <%= @pitch.pitch_video_url %>
+  <b>Video:</b>
+  <%= render :partial => 'youtube_video', locals: {pitch: @pitch, size: "full"}  %> 
 </p>
 
 
