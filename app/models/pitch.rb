@@ -7,14 +7,26 @@ class Pitch < ActiveRecord::Base
     regex = /(https)\:\/\/(www\.youtube\.com\/watch\?v\=)?(.*)/.match(pitch_video_url)
     key = regex[3]  
     return key
-  end       
+  end   
+      
   def get_video_details         
     yt_video_url = 'https://www.googleapis.com/youtube/v3/videos?id='+vid_key+'&key=AIzaSyB0P5uFtB126GMflBS8lg1QoYMNVB7RwHk&part=snippet,statistics'
     details = RestClient.get(yt_video_url)
      return details       
-  end
+  end 
+  
   def embed_video         
     embed_video_url = 'http://www.youtube.com/v/'+vid_key+'?version=3'
     return embed_video_url       
-  end
+  end   
+  
+  def return_size(size)
+    case size
+    when "thumb"
+        dimensions = [160, 95]
+    when "full"
+      dimensions = [640,390]
+    end
+  end 
+  
 end

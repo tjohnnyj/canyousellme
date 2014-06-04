@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<h1>Welcome to <%= @pitcher.name %>'s homepage</h1>
 <p>
   <b>Name:</b>
   <%= @pitcher.name %>
@@ -11,12 +11,10 @@
 </p>
 
 <% pitches = @pitcher.pitches_for_pitcher(@pitcher.id) %>     
-<%= pitches.inspect %>
 <% pitches.each do |p| %> 
   <p>
     <%= link_to "view", pitcher_pitch_path(@pitcher.id, p.id) %>     
-    <%= p.get_video_details %>  
-    <%= render :partial => 'pitches/youtube_video', locals: {pitch: p}  %>
+    <%= render :partial => 'pitches/youtube_video', locals: {pitch: p, size: "thumb"}  %>
     
   </p>
 <% end %>
